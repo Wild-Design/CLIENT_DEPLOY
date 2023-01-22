@@ -1,7 +1,13 @@
 import "./ChatRender.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useRef } from "react";
 
 export default function ChatRender({ menssages }) {
+  const scrollRef = useRef(null);
+  useEffect(() => {
+    scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
+  }, []);
+
   const { user } = useAuth0();
   let nameUser = "";
   if (user.email.includes("@")) {
@@ -13,7 +19,7 @@ export default function ChatRender({ menssages }) {
   }
 
   return (
-    <div className="chat-render">
+    <div ref={scrollRef} className="chat-render">
       {menssages?.map((msj, index) => {
         if (!msj.message) {
           return;

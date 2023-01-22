@@ -1,12 +1,15 @@
 import "./ChatRender.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 export default function ChatRender({ menssages }) {
+  const chat = useSelector((state) => state.chat.list);
+
   const scrollRef = useRef(null);
   useEffect(() => {
     scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
-  }, []);
+  }, [chat]);
 
   const { user } = useAuth0();
   let nameUser = "";

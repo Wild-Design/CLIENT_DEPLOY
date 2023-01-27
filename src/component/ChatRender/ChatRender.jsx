@@ -1,59 +1,67 @@
-import "./ChatRender.css";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import './ChatRender.css'
 
-export default function ChatRender({ menssages }) {
-  const chat = useSelector((state) => state.chat.list);
 
-  const scrollRef = useRef(null);
-  useEffect(() => {
-    scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight);
-  }, [chat]);
 
-  const { user } = useAuth0();
-  let nameUser = "";
-  if (user.email.includes("@")) {
-    let newName = [];
-    for (let i = 0; user.email[i] !== "@"; i++) {
-      newName.push(user.email[i]);
-    }
-    nameUser = newName.join("");
-  }
+export default function  ChatRender({menssages}){
+    
+    const { my } = useSelector((state) => state.users);
+   
+    return (<div className="chat-render">
+        {menssages?.map((msj,index)=>{
+        if(!msj.message){return ()=>{}
+        }else{
+             if(my.email=== msj.user)
+            console.log(msj.email)
+            let name1=msj.user;
+             if(msj.user.includes("@")){
+              let newName =[]
+              for(let i = 0; msj.user[i] !== "@"; i++){
+                  newName.push(msj.user[i])   
+              }   
+              name1 = newName.join("")}
+              // console.log(my.email,name1,msj.user)
+              if(my.email === msj.user || name1 === my.email ){
+            
+                return (<div key={index} className="divMenssageMe"> 
+                  {msj.message.includes('https://res.cloudinary.com/daekdf1sh/image/private')?
+                      <img src={msj.message} alt="" />: 
+                   msj.message.includes('https://res.cloudinary.com/daekdf1sh/video/private/')?
+                   <video controls>
+                     <source src={msj.message} type="video/mp4"/>
+                     <source src={msj.message} type="video/webm"/>
+                     <source src={msj.message} type="video/ogg"/>
+                     invalid format 
+                   </video>:
+                      <p> {msj.message} </p> 
+                  }
+                  <br/>
+                </div>)}
 
-  return (
-    <div ref={scrollRef} className="chat-render">
-      {menssages?.map((msj, index) => {
-        if (!msj.message) {
-          return;
-        } else {
-          if (nameUser === msj.user) console.log(msj.email);
-          let name1 = msj.user;
-          if (msj.user.includes("@")) {
-            let newName = [];
-            for (let i = 0; msj.user[i] !== "@"; i++) {
-              newName.push(msj.user[i]);
-            }
-            name1 = newName.join("");
-          }
-
-          if (nameUser === msj.user || name1 === nameUser) {
-            return (
-              <div key={index} className="divMenssageMe">
-                <p>{msj.message}</p>
-                <br />
+              return <div key={index} className="divMenssage">
+                {msj.message.includes('https://res.cloudinary.com/daekdf1sh/image/private')?<div> <p>{name1}</p>
+                <img src={msj.message} alt="" /></div>
+                      
+                      : 
+                   msj.message.includes('https://res.cloudinary.com/daekdf1sh/video/private/')? <div>
+                    <p>{name1}</p>
+                   <video controls>
+                     <source src={msj.message} type="video/mp4"/>
+                     <source src={msj.message} type="video/webm"/>
+                     <source src={msj.message} type="video/ogg"/>
+                     invalid format 
+                   </video>
+                   </div>:
+                      <p>{name1} : {msj.message}</p>
+                  }
+              
+              <br/>
               </div>
-            );
+  
           }
-          return (
-            <div key={index} className="divMenssage">
-              <label>{name1} : </label>
-              <p>{msj.message}</p>
-              <br />
-            </div>
-          );
-        }
-      })}
-    </div>
-  );
+
+          
+        })}
+
+    </div>);
 }

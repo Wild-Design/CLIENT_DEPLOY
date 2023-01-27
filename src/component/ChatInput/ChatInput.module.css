@@ -1,13 +1,7 @@
-/* .chat {
-  height: 100px;
+.chat {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: transparent;
-  position: absolute;
-  bottom: 0;
-  left: 40%;
 }
 .chat input[type="text"] {
   width: 180px;
@@ -36,24 +30,6 @@
 .chat button:active {
   transform: scale(0.9);
   /* cuando se hace click, se achica el tamaño*/
-/* Scaling button to 0.98 to its original size */
-/* transform: scale(0.95);
-} */
-.formContainer {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 5px;
-}
-.formContainer input {
-  max-width: 300px;
-  padding: 10px;
-  outline: none;
-}
-
-.formContainer button {
-  width: 100px;
-  background-color: rgb(152, 112, 237);
-  color: #fff;
-  font-size: 20px;
+  /* Scaling button to 0.98 to its original size */
+  transform: scale(0.95);
 }

@@ -1,41 +1,39 @@
-import React from 'react'
+import React from "react";
 import {
-    Drawer,
-    DrawerBody,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    useDisclosure,
-    Flex,
-  } from '@chakra-ui/react'
+  Drawer,
+  DrawerBody,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  Flex,
+  Avatar,
+} from "@chakra-ui/react";
 
-  import {FaRegUserCircle} from 'react-icons/fa'
-  import ProfileInfo from './ProfileInfo'
+import ProfileInfo from "./ProfileInfo";
+import { useSelector } from "react-redux";
 
 function Profile() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement] = React.useState("left");
+  const user = useSelector(state => state.users.my)
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const [placement] = React.useState('rigth')
 
   return (
+    <Flex justify="flex-end" pr="1" ml="3" mt="0">
+       <Avatar size='lg' name={user.name} src={user.picture} onClick={onOpen} cursor="pointer" />
 
-    <Flex justify="flex-end" pr="1" >      
-        <FaRegUserCircle onClick={onOpen} cursor="pointer" fontSize="50px"/>
-     
-      <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm" >
+      <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
         <DrawerOverlay />
         <DrawerContent>
-        <DrawerCloseButton  maxW='100' />
-       
-        <DrawerBody>
-           <ProfileInfo/>
-        </DrawerBody>
+          <DrawerCloseButton maxW="100" />
+          <DrawerBody>
+            <ProfileInfo />
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
-    
     </Flex>
-  )
+  );
 }
 
-export default Profile
-
+export default Profile;

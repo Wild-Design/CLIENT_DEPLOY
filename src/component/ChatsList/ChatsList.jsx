@@ -17,7 +17,6 @@ export default function ChatsList() {
   let listUser = [];
 
   messages.forEach((msj) => {
-    console.log(msj);
     //consulto si ya tengo ese usuario en mi lista
     if (
       !listUser.some((user) => user.email === msj.user) &&

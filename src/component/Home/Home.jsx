@@ -63,6 +63,7 @@ export default function Home() {
       sendInfo(dispatch, actionMyData);
       sendPicInfo(dispatch, actionMyData);
       sendBio(dispatch, actionMyData);
+      
     }
   }, [isAuthenticated, navigate, user, dispatch]);
 

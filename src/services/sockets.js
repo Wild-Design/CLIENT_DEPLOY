@@ -29,11 +29,12 @@ export const listenId = (id, handle) => {
 
 //ESCUCHO RUTA USERS Y ACTUALIZO EL ESTADO
 export const listenUsers = (dispatch, action) => {
-  if (!socket) return console.log('No hay soket');
+  if (!socket) return console.log("No hay soket");
   socket.on("users", (value) => {
-    console.log('estoy consologueando el value del coso',value)
+    console.log("estoy consologueando el value del coso", value);
     return dispatch(action(value));
   });
+  console.log("Fuera del if");
 };
 
 //MANDAR MENSAJE A UNA RUTA DEL SERVER

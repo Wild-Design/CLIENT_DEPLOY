@@ -29,7 +29,7 @@ export const listenId = (id, handle) => {
 
 //ESCUCHO RUTA USERS Y ACTUALIZO EL ESTADO
 export const listenUsers = (dispatch, action) => {
-  if (!socket) return true;
+  if (!socket) return console.log('No hay soket');
   socket.on("users", (value) => {
     return dispatch(action(value));
   });

@@ -31,6 +31,7 @@ export const listenId = (id, handle) => {
 export const listenUsers = (dispatch, action) => {
   if (!socket) return console.log('No hay soket');
   socket.on("users", (value) => {
+    console.log('estoy consologueando el value del coso',value)
     return dispatch(action(value));
   });
 };

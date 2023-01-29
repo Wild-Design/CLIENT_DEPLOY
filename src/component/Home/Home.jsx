@@ -40,7 +40,7 @@ export default function Home() {
       navigate("/");
     } else {
       //SI ESTOY AUTENTICADO
-
+      console.log('entra en el else');
       // INICIALIZO MI STORE
       initiateSocket(user);
       //MANEJADOR DE SALA ID

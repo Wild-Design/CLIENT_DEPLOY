@@ -4,6 +4,7 @@ import { filterUsers } from "../../store/slices/users/index";
 import { useEffect, useState } from "react";
 import StylingUserList from "./StylingUserList";
 import { Box, Select } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 const UserList = () => {
   const [input, setInput] = useState();
 
@@ -45,7 +46,7 @@ const UserList = () => {
         />
       </form>
       <div>
-        <div>
+        <div className={style.list}>
           {input
             ? list
                 .filter((user) => {

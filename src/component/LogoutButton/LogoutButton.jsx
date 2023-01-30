@@ -12,8 +12,9 @@ const LogoutButton = () => {
       if (response) {
         sendMessage("exit", user);
         logout({
-          returnTo: 'http://localhost:3000',
-          clientID: 'WawCbbdYBrnbIDvqnhUIyulgHhicovQJ'
+          // returnTo: "http://localhost:3000",
+          returnTo: "https://client-deploy-wild-design.vercel.app",
+          clientID: "WawCbbdYBrnbIDvqnhUIyulgHhicovQJ",
         });
       }
     });

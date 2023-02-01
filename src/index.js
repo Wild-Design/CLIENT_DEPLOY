@@ -13,8 +13,8 @@ root.render(
    
     <BrowserRouter>
     <Auth0Provider 
-    domain='dev-e0fe2tb8jr3oe4yq.us.auth0.com'
-    clientId='WawCbbdYBrnbIDvqnhUIyulgHhicovQJ'
+    domain='dev-xx2o6ipk71ckekao.us.auth0.com'
+    clientId='LSk86bV3bJidSE2BX0QpuEGrFszKJhlc'
     redirectUri={window.location.origin}
     >
       <ChakraProvider theme={theme}>

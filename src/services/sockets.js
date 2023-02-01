@@ -3,8 +3,8 @@ import io from "socket.io-client";
 let socket;
 //INICIA SOCKET CONECTADO CON RUTA JOIN Y MANDANDO EL USUARIO
 export const initiateSocket = (user) => {
-  // socket = io('http://localhost:3001');
-  socket = io("https://serverdeploy-production.up.railway.app/");
+  socket = io('http://localhost:3001');
+  // socket = io("https://serverdeploy-production.up.railway.app/");
   console.log(`Connecting socket...`);
   if (socket && user) {
     socket.emit("join", user);
@@ -29,12 +29,12 @@ export const listenId = (id, handle) => {
 
 //ESCUCHO RUTA USERS Y ACTUALIZO EL ESTADO
 export const listenUsers = (dispatch, action) => {
-  if (!socket) return console.log("No hay soket");
+  if (!socket) return ;
   socket.on("users", (value) => {
-    console.log("estoy consologueando el value del coso", value);
+    
     return dispatch(action(value));
   });
-  console.log("Fuera del if");
+ 
 };
 
 //MANDAR MENSAJE A UNA RUTA DEL SERVER
@@ -85,3 +85,5 @@ export const sendBio = (dispatch, action) => {
     return dispatch(action(value));
   });
 };
+
+

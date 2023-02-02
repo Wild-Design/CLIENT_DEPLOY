@@ -53,7 +53,7 @@ const UserList = () => {
 </Flex>
 </form>
       <div>
-        <div>
+        <div className={style.list}>
           {input
             ? listCopy
                 .filter((user) => {

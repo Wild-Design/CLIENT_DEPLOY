@@ -29,10 +29,12 @@ export const listenId = (id, handle) => {
 
 //ESCUCHO RUTA USERS Y ACTUALIZO EL ESTADO
 export const listenUsers = (dispatch, action) => {
-  if (!socket) return;
+  if (!socket) return ;
   socket.on("users", (value) => {
+    
     return dispatch(action(value));
   });
+ 
 };
 
 //MANDAR MENSAJE A UNA RUTA DEL SERVER
@@ -83,3 +85,5 @@ export const sendBio = (dispatch, action) => {
     return dispatch(action(value));
   });
 };
+
+

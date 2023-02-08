@@ -4,7 +4,7 @@ let socket;
 //INICIA SOCKET CONECTADO CON RUTA JOIN Y MANDANDO EL USUARIO
 export const initiateSocket = (user) => {
   // socket = io("http://localhost:3001");
-  socket = io("https://serverdeploy-production.up.railway.app/");
+   socket = io("https://serverdeploy-production.up.railway.app/");
   console.log(`Connecting socket...`);
   if (socket && user) {
     socket.emit("join", user);

@@ -15,7 +15,7 @@
 .card:hover {
   cursor: pointer;
 }
-img {
+.card img {
   border-radius: 10px;
   width: 50px !important;
   height: 50px !important;

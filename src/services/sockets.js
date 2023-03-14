@@ -4,7 +4,7 @@ let socket;
 //INICIA SOCKET CONECTADO CON RUTA JOIN Y MANDANDO EL USUARIO
 export const initiateSocket = (user) => {
   // socket = io("http://localhost:3001");
-  socket = io("https://wildapi.smag.ar/");
+  socket = io("https://talkap.com.ar/api/");
   console.log(`Connecting socket...`);
   if (socket && user) {
     socket.emit("join", user);
